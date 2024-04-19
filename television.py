@@ -7,7 +7,7 @@ class Television:
     MIN_CHANNEL = 0
     MAX_CHANNEL = 3
 
-    def __init__(self):
+    def __init__(self) -> None:
         '''
         Here we are initializing the variables for the new object
         '''
@@ -16,31 +16,25 @@ class Television:
         self.__volume: int = Television.MIN_VOLUME
         self.__channel: int = Television.MIN_CHANNEL
 
-    def power(self):
+    def power(self) -> None:
         '''
         Method to turn on the Tv
-        :return:
         '''
         if not self.__status:
             self.__status = True
         else:
             self.__status = False
 
-    def mute(self):
+    def mute(self) -> None:
         '''
         Method to mute the Tv
-        :return:
         '''
         if self.__status:
-            if not self.__muted:
-                self.__muted = True
-            else:
-                self.__muted = False
+            self.__muted = not self.__muted
 
-    def channel_up(self):
+    def channel_up(self) -> None:
         '''
         Method to turn up the channel number
-        :return:
         '''
         if self.__status:
             if self.__channel < Television.MAX_CHANNEL:
@@ -48,10 +42,9 @@ class Television:
             else:
                 self.__channel = Television.MIN_CHANNEL
 
-    def channel_down(self):
+    def channel_down(self) -> None:
         '''
         Method to turn down the channel number
-        :return:
         '''
         if self.__status:
             if self.__channel > Television.MIN_CHANNEL:
@@ -59,30 +52,28 @@ class Television:
             else:
                 self.__channel = Television.MAX_CHANNEL
 
-    def volume_up(self):
+    def volume_up(self) -> None:
         '''
         Method to turn up the volume of the Tv
-        :return:
         '''
         if self.__status:
             self.__muted = False
             if self.__volume < Television.MAX_VOLUME:
                 self.__volume += 1
 
-    def volume_down(self):
+    def volume_down(self) -> None:
         '''
         Method to turn down the volume of the Tv
-        :return:
         '''
         if self.__status:
             self.__muted = False
             if self.__volume > Television.MIN_VOLUME:
                 self.__volume -= 1
 
-    def __str__(self):
+    def __str__(self) -> str:
         '''
         Method to show the television status
-        :return:
+        :return: Tv status
         '''
         if self.__muted:
             return f"Power = {self.__status}, Channel = {self.__channel}, Volume = {Television.MIN_VOLUME}"
